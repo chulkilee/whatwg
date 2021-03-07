@@ -10,6 +10,9 @@ defmodule WHATWG.MixProject do
       deps: deps(),
       package: package(),
 
+      # hex
+      description: "Toolkit for WHATWG standards",
+
       # docs
       name: "WHATWG",
       source_url: "https://github.com/chulkilee/whatwg",

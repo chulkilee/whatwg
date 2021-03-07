@@ -1,5 +1,7 @@
 defmodule WHATWG do
   @moduledoc """
-  Documentation for `WHATWG`.
+  Web Hypertext Application Technology Working Group (WHATWG).
+
+  See [the official website](https://whatwg.org/).
   """
 end
