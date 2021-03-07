@@ -7,7 +7,8 @@ defmodule WHATWG.MixProject do
       version: "0.0.1-dev",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      package: package()
     ]
   end
 
@@ -19,5 +20,12 @@ defmodule WHATWG.MixProject do
 
   defp deps do
     []
+  end
+
+  defp package do
+    [
+      licenses: ["Apache-2.0"],
+      maintainers: ["Chulki Lee"]
+    ]
   end
 end
