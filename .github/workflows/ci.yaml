@@ -1,0 +1,34 @@
+name: CI
+on: [pull_request, push]
+jobs:
+  test:
+    name: test
+    strategy:
+      matrix:
+        otp: ['23.2.7', '22.3.4.16']
+        elixir: ['1.11.3', '1.10.4']
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: erlef/setup-elixir@v1
+        with:
+          otp-version: ${{ matrix.otp }}
+          elixir-version: ${{ matrix.elixir }}
+      - uses: actions/cache@v2
+        with:
+          path: |
+            _build
+            deps
+          key: ${{ matrix.elixir }}-${{ matrix.otp }}-${{ hashFiles('mix.exs') }}-${{ hashFiles('mix.lock') }}
+      - run: mix deps.get
+      - run: mix format --check-formatted
+      - run: mix compile
+        env:
+          MIX_ENV: test
+      - run: mix credo --strict
+        env:
+          MIX_ENV: test
+      - run: mix coveralls.github
+        env:
+          MIX_ENV: test
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
