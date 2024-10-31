@@ -120,10 +120,10 @@ defmodule WHATWG.PercentEncoding do
       iex> decode_bytes("a%")
       ** (ArgumentError) malformed percent encoding "a%"
 
-      iex> decode_bytes('a')
+      iex> decode_bytes(~c"a")
       ** (FunctionClauseError) no function clause matching in WHATWG.PercentEncoding.decode_bytes/2
 
-      iex> decode_bytes('a')
+      iex> decode_bytes(~c"a")
       ** (FunctionClauseError) no function clause matching in WHATWG.PercentEncoding.decode_bytes/2
 
       iex> decode_bytes(<<1::4>>)
