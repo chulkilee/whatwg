@@ -107,21 +107,21 @@ defmodule WHATWG.Infra do
 
   > An **ASCII digit** is a code point in the range U+0030 (0) to U+0039 (9), inclusive.
   """
-  defguard is_ascii_digit(term) when term in '0123456789'
+  defguard is_ascii_digit(term) when term in ~c"0123456789"
 
   @doc """
   Returns `true` if `term` is an integer for an ASCII upper hex digit; otherwise returns `false`.
 
   > An **ASCII upper hex digit** is an ASCII digit or a code point in the range U+0041 (A) to U+0046 (F), inclusive.
   """
-  defguard is_ascii_upper_hex_digit(term) when term in 'ABCDEF'
+  defguard is_ascii_upper_hex_digit(term) when term in ~c"ABCDEF"
 
   @doc """
   Returns `true` if `term` is an integer for an ASCII lower hex digit; otherwise returns `false`.
 
   > An **ASCII lower hex digit** is an ASCII digit or a code point in the range U+0061 (a) to U+0066 (f), inclusive.
   """
-  defguard is_ascii_lower_hex_digit(term) when term in 'abcdef'
+  defguard is_ascii_lower_hex_digit(term) when term in ~c"abcdef"
 
   @doc """
   Returns `true` if `term` is an integer for an ASCII hex digit; otherwise returns `false`.
@@ -136,14 +136,14 @@ defmodule WHATWG.Infra do
 
   > An **ASCII upper alpha** is a code point in the range U+0041 (A) to U+005A (Z), inclusive.
   """
-  defguard is_ascii_upper_alpha(term) when term in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  defguard is_ascii_upper_alpha(term) when term in ~c"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
   @doc """
   Returns `true` if `term` is an integer for an ASCII lower alpha; otherwise returns `false`.
 
   > An **ASCII lower alpha** is a code point in the range U+0061 (a) to U+007A (z), inclusive.
   """
-  defguard is_ascii_lower_alpha(term) when term in 'abcdefghijklmnopqrstuvwxyz'
+  defguard is_ascii_lower_alpha(term) when term in ~c"abcdefghijklmnopqrstuvwxyz"
 
   @doc """
   Returns `true` if `term` is an integer for an ASCII alpha; otherwise returns `false`.
