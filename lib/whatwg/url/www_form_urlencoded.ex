@@ -102,9 +102,7 @@ defmodule WHATWG.URL.WwwFormUrlencoded do
   defp reduce_serialize_in_reverse(pair, _acc, _to_str) do
     raise(
       ArgumentError,
-      "expected a list with two-element tuples with binary elements must be given, got an entry: #{
-        inspect(pair)
-      }"
+      "expected a list with two-element tuples with binary elements must be given, got an entry: #{inspect(pair)}"
     )
   end
 
@@ -113,7 +111,7 @@ defmodule WHATWG.URL.WwwFormUrlencoded do
 
   def encode_bytes(bytes), do: PercentEncoding.encode_bytes(bytes, &percent_encode_set?/1, true)
 
-  @percent_encode_except '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz*-._'
+  @percent_encode_except ~c"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz*-._"
 
   defp percent_encode_set?(byte) when is_integer(byte) and byte not in @percent_encode_except,
     do: true
